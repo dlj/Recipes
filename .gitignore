@@ -51,4 +51,6 @@ _ReSharper*/
 #NuGet DONT!
 packages/
 
-db.php
+javascript/
+
+dbconfig.php

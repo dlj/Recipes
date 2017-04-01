@@ -1,49 +1,56 @@
 <?php
-  require('db.php');
+require('./db.php');
 class recipe
 {
-
   private $db; 
   
   function __construct() 
   {
-    $this->db = new db();
+    $this->db = new Database();
   }
   
-  public function get($id = null)
+  public function get(recipeObject $recipeObject = null)
   {
-  if (is_null($id))
+  if (is_null($recipeObject) || is_null($recipeObject->id))
   {  
     return $this->db->select('recipies', array())->result_array();
   }
   else
   {
-      return $this->db->select('recipies', array('id' => $id))->row_array();
+      return $this->db->select('recipies', array('id' => $recipeObject->id))->result_array();
   }
   
 
   }
 
-  public function insert()
+  public function post(recipeObject $recipeObject)
+  {
+    $object = $this->get($recipeObject);
+    if ($object == null)
+      return null;
+      $this->db->update('recipies', (array)$recipeObject, array('id' => $recipeObject->id));
+     return $recipeObject;
+  }
+  
+  public function put()
   {
   
   }
   
-  public function update()
+  public function delete()
   {
   
   }
-  
+
+  public function getObject() {
+    return new recipeObject();
+  } 
 }
 
 
-class recipeObject
+class recipeObject extends objectDefinition
 {
   public $id;
   public $name;      
 }
-
-
-
-
 ?>

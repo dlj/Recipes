@@ -1,13 +1,15 @@
 <?php
-  require('db.php');
+require('../db.php');
+
+
+
 class ingredients
 {
-
   private $db; 
   
   function __construct() 
   {
-    $this->db = new db();
+    $this->db = new Database();
   }
   
   public function get($id = null)
