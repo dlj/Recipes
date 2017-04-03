@@ -1,56 +1,44 @@
 <?php
-require('./db.php');
-class recipe
+require("service.php");
+
+class recipe extends service
 {
-  private $db; 
-  
-  function __construct() 
-  {
-    $this->db = new Database();
-  }
-  
-  public function get(recipeObject $recipeObject = null)
-  {
-  if (is_null($recipeObject) || is_null($recipeObject->id))
-  {  
-    return $this->db->select('recipies', array())->result_array();
-  }
-  else
-  {
-      return $this->db->select('recipies', array('id' => $recipeObject->id))->result_array();
-  }
-  
 
-  }
+    public $objectDefinitionType = "recipeObject";
 
-  public function post(recipeObject $recipeObject)
-  {
-    $object = $this->get($recipeObject);
-    if ($object == null)
-      return null;
-      $this->db->update('recipies', (array)$recipeObject, array('id' => $recipeObject->id));
-     return $recipeObject;
-  }
+    function __construct()
+    {
+        $this->table = 'recipies';
+        parent::__construct();
+    }
+  /* Comment this in again, if overriding of default service code is needed
   
-  public function put()
-  {
-  
-  }
-  
-  public function delete()
-  {
-  
-  }
+    public function get(objectDefinition $recipeObject = null)
+    {
+       return parent::get($recipeObject);
+    }
 
-  public function getObject() {
-    return new recipeObject();
-  } 
+    public function post(objectDefinition $recipeObject)
+    {
+      return parent::post($recipeObject);
+    }
+  
+    public function put(objectDefinition $recipeObject)
+    {
+      return parent::put($recipeObject);
+    }
+  
+    public function delete(objectDefinition $recipeObject)
+    {
+      return parent::delete($recipeObject);
+    }
+*/
+
 }
 
 
 class recipeObject extends objectDefinition
 {
-  public $id;
-  public $name;      
+    public $id;
+    public $name;
 }
-?>
