@@ -22,15 +22,23 @@ class service
     {
         $rtn = [];
 
-        if (is_null($object) || is_null($object->id)) {
+        if (is_null($object)) {
             $rtn = $this->db->select($this->table, array())->result_array();
         } else {
-            $rtn = $this->db->select($this->table, array('id' => $object->id))->result_array();
+
+            $queryArray = array_filter((array)$object, function($value, $key) {
+                return $value != null;
+            },ARRAY_FILTER_USE_BOTH);
+
+            $rtn = $this->db->select($this->table, $queryArray)->result_array();
             if ($rtn != null && count($rtn) == 1)
             { 
                 return $this->createObject($rtn[0]);
             }
 
+            foreach ($rtn as $value) {
+                $value = $this->createObject($value);;
+}
             return $rtn;
         }
     }

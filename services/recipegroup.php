@@ -3,7 +3,7 @@ require('../db.php');
 
 
 
-class recipies_ingredients
+class recipes_ingredients
 {
   private $db; 
   

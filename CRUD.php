@@ -46,10 +46,7 @@ if (class_exists($resource)) {
                 throw new Exception( get_class($tmpObject).' does not extend objectDefinition');
             }
             $tmpObject->fromArray($payload);
-        
-    
-           
-           
+
             $output = $resource->{$method}($tmpObject);
             header('Content-Type: application/json');
             echo json_encode($output);

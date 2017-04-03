@@ -2,17 +2,12 @@ class recipeDetails {
     public getRecipe(id: number): any {
         
         $.ajax({
-            url: "/services/recipe/" + id,
-            type: "GET"
+            url: "/services/recipes_ingredients",
+            type: "GET",
+            data: { ingredients_id : 3}
         }).done(function(tmpData) {
-        tmpData.name = "does this update?";
-/*
-        $.ajax({
-            url: "/services/recipe/"+ id,
-            type: "POST",
-            data : JSON.stringify(tmpData)
-        });
-*/
+        tmpData.name = "does this new";
+        tmpData.id = 19;
         });
 
     }

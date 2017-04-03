@@ -20,7 +20,7 @@ class ingredients
   }
   else
   {
-      return $this->db->query('select ingredients.*,  recipies_ingredients.text, recipies_ingredients.amount from ingredients inner join recipies_ingredients on recipies_ingredients.ingredients_id = ingredients.id where recipies_ingredients.receipe_id = '.  $id. '')->result_array();
+      return $this->db->query('select ingredients.*,  recipes_ingredients.text, recipes_ingredients.amount from ingredients inner join recipes_ingredients on recipes_ingredients.ingredients_id = ingredients.id where recipes_ingredients.receipe_id = '.  $id. '')->result_array();
   }
   
 

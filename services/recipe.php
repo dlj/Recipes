@@ -8,9 +8,10 @@ class recipe extends service
 
     function __construct()
     {
-        $this->table = 'recipies';
+        $this->table = 'recipes';
         parent::__construct();
     }
+    
   /* Comment this in again, if overriding of default service code is needed
   
     public function get(objectDefinition $recipeObject = null)
