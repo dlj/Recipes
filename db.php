@@ -396,7 +396,7 @@ class Database
      * Insert a row in a table
      *
      * @param $table
-     * @param array $fields
+     * @param arrfay $fields
      * @param bool|false $appendix
      * @param bool|false $ret
      * @return bool|Database
@@ -437,7 +437,7 @@ class Database
             $this->result = null;
             return false;
         } else {
-            return $this;
+            return $this->mysql->insert_id;
         }
     }
 
