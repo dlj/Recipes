@@ -1,73 +1,61 @@
 <?php
  include("services/objectDefinition.php");
 error_reporting(E_ALL);
-ini_set("display_errors","On");
+ini_set("display_errors", "On");
 // assume autoloader available and configured
 $path = parse_url($_SERVER["REQUEST_URI"], PHP_URL_PATH);
+$requestParms = parse_url($_SERVER["REQUEST_URI"], PHP_URL_QUERY); 
 $path = trim($path, "/");
+
+$payload = [];
+
+if (strlen($requestParms) > 0)
+    parse_str($requestParms, $payload);
 
 $entityBody = file_get_contents('php://input');
 
-if ($entityBody == null)
+if ($entityBody == null) {
     $entityBody = "";
+}
 
-@list($services, $resource, $params) = explode("/", $path, 3);
+$tmpEntity = json_decode($entityBody, true);
+
+if ($tmpEntity != null)
+  $payload = array_merge($payload, $tmpEntity);
+
+$inputParms = explode("/", $path, 3);
+if (count($inputParms) < 3) {
+    $inputParms = array_pad($inputParms, 3, '');
+}
+
+@list($services, $resource, $resourceId) = $inputParms;
 
 $method = strtolower($_SERVER["REQUEST_METHOD"]);
-$params = !empty($params) ? explode("/", $params) : array();
+$resourceId = !empty($resourceId) ? explode("/", $resourceId) : array();
 
-    if ((include $services.'/'.$resource.'.php') !== 1)
-    {      
-      die("DIE");
-    }
+if ((include $services.'/'.$resource.'.php') !== 1) {
+    die("DIE");
+}
 
 if (class_exists($resource)) {
-    try {        
+    try {
           $resource = new $resource();
-          $payload = json_decode($entityBody,true);
+           $tmpObject = $resource->createObject();
 
-          if (count($payload) == 0)
-            $payload = [];
-
-            if (count($params) > 0)
-                $payload["id"] = $params[0];
-           $tmpObject = $resource->getObject();
-
-        if (!($tmpObject instanceof objectDefinition)) {
-            echo "hej";
-            throw new Exception( get_class($tmpObject).' does not extend objectDefinition');
-        }
-
-           $tmpObject->fromArray($payload);  
-            
+            if (!($tmpObject instanceof objectDefinition)) {
+                throw new Exception( get_class($tmpObject).' does not extend objectDefinition');
+            }
+            $tmpObject->fromArray($payload);
+        
+    
+           
+           
             $output = $resource->{$method}($tmpObject);
             header('Content-Type: application/json');
             echo json_encode($output);
-    }
-    catch (Exception $e) {
+    } catch (Exception $e) {
         header("HTTP/1.1 500 Internal Server Error");
     }
-}
-else {
+} else {
     header("HTTP/1.1 404 File Not Found");
 }
-
-  
-/*
-require('db.php');
-
-$database_name = 'bioheadd_food';
-$username = 'bioheadd_admin';
-$password = 'M6zkTr0PLP9D';
-$host = 'localhost';
-
-$db = new db($database_name, $username, $password, $host);
-$result = $db->select('ingredients', array());
-
-foreach ($result->row_array() as $row)
-{
-echo $row;
-}
-*/
-
-?>
