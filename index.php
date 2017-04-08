@@ -22,17 +22,7 @@
         <div class="topMenuItem"> Food Planner </div>
     </div>
     <div id="mainContent">
-    <div style="width:300px;height:200px;background-image:url('http://www.pethealthnetwork.com/sites/default/files/why-should-i-spay-my-new-kitten-138101629.jpg ');background-repeat:round;margin:20px; position:relative;float:left;border:1px solid black"> </div>
-    <div style="width:300px;height:200px;background-image:url('http://www.pethealthnetwork.com/sites/default/files/why-should-i-spay-my-new-kitten-138101629.jpg ');background-repeat:round;margin:20px; position:relative;float:left;border:1px solid black"> </div>
-    <div style="width:300px;height:200px;background-image:url('http://www.pethealthnetwork.com/sites/default/files/why-should-i-spay-my-new-kitten-138101629.jpg ');background-repeat:round;margin:20px; position:relative;float:left;border:1px solid black"> </div>
-    <div style="width:300px;height:200px;background-image:url('http://www.pethealthnetwork.com/sites/default/files/why-should-i-spay-my-new-kitten-138101629.jpg ');background-repeat:round;margin:20px; position:relative;float:left;border:1px solid black"> </div>
-    <div style="width:300px;height:200px;background-image:url('http://www.pethealthnetwork.com/sites/default/files/why-should-i-spay-my-new-kitten-138101629.jpg ');background-repeat:round;margin:20px; position:relative;float:left;border:1px solid black"> </div>
-    <div style="width:300px;height:200px;background-image:url('http://www.pethealthnetwork.com/sites/default/files/why-should-i-spay-my-new-kitten-138101629.jpg ');background-repeat:round;margin:20px; position:relative;float:left;border:1px solid black"> </div>
-    <div style="width:300px;height:200px;background-image:url('http://www.pethealthnetwork.com/sites/default/files/why-should-i-spay-my-new-kitten-138101629.jpg ');background-repeat:round;margin:20px; position:relative;float:left;border:1px solid black"> </div>
-    <div style="width:300px;height:200px;background-image:url('http://www.pethealthnetwork.com/sites/default/files/why-should-i-spay-my-new-kitten-138101629.jpg ');background-repeat:round;margin:20px; position:relative;float:left;border:1px solid black"> </div>
-    <div style="width:300px;height:200px;background-image:url('http://www.pethealthnetwork.com/sites/default/files/why-should-i-spay-my-new-kitten-138101629.jpg ');background-repeat:round;margin:20px; position:relative;float:left;border:1px solid black"> </div>
-    <div style="width:300px;height:200px;background-image:url('http://www.pethealthnetwork.com/sites/default/files/why-should-i-spay-my-new-kitten-138101629.jpg ');background-repeat:round;margin:20px; position:relative;float:left;border:1px solid black"> </div>
-    <div style="width:300px;height:200px;background-image:url('http://www.pethealthnetwork.com/sites/default/files/why-should-i-spay-my-new-kitten-138101629.jpg ');background-repeat:round;margin:20px; position:relative;float:left;border:1px solid black"> </div>
+     <?php require("pages/recipes.php") ?>
 
     </div>
 </body>

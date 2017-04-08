@@ -50,6 +50,7 @@ if (class_exists($resource)) {
             $output = $resource->{$method}($tmpObject);
             header('Content-Type: application/json');
             echo json_encode($output);
+            
     } catch (Exception $e) {
         header("HTTP/1.1 500 Internal Server Error");
     }
