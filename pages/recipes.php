@@ -2,6 +2,7 @@
  <link rel="stylesheet" href="css/recipe.css">
     <template id='recipeTemplate'>
       <!--  Move this to the CSS and make this with Flex instead -->
+      <a class="recipeRef">
       <div class="recipeContainer">
         <div class="recipeImage"></div>
         <div class="recipeInformationContainer">
