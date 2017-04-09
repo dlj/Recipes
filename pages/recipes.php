@@ -1,13 +1,14 @@
 <html>
  <link rel="stylesheet" href="css/recipe.css">
     <template id='recipeTemplate'>
-    <a href="/pages/recipedetails.php?xxx"> 
       <!--  Move this to the CSS and make this with Flex instead -->
-      <div style="width:250px;height:250px;margin:20px; position:relative;float:left;border:1px solid black">
-      <div style="height:200px;background-image:url('http://www.pethealthnetwork.com/sites/default/files/why-should-i-spay-my-new-kitten-138101629.jpg ');background-repeat:round"></div>
-      <div style="float:left;margin-left:5px;margin-top:3px;"><span>Time : </span> <span id='recipeTemplatePreparationTime'></span></div>
-      <div style="float:right;margin-right:5px;margin-top:3px"><span>Difficulty : </span> <span id='recipeTemplateDifficulty'></span></div>
-      <div id='recipeTemplateName' style="clear:both;margin-left:5px;"></div>
+      <div class="recipeContainer">
+        <div class="recipeImage"></div>
+        <div class="recipeInformationContainer">
+          <div class="recipeInformationTime"><span>Time : </span> <span class='recipeInformationTimeText'></span></div>
+          <div class="recipeInformationDifficulty"><span>Difficulty : </span> <span class='recipeInformationDifficultyText'></span></div>
+          <div class="recipeInformationName"><span class="recipeInformationNameText"></span></div>
+        </div>
       </div>
       </a>
     </template>

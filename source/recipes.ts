@@ -9,9 +9,9 @@ class Recipes {
 
   public createRecipeDOM(input) {
       let temp = $(this.templateTag).clone();
-      $(temp).find("#recipeTemplateName").text(input.id + " - " + input.name);
-      $(temp).find("#recipeTemplatePreparationTime").text(input.preparationtime);
-      $(temp).find("#recipeTemplateDifficulty").text(input.difficulty);
+      $(temp).find(".recipeInformationNameText").text(input.name);
+      $(temp).find(".recipeInformationTimeText").text(input.preparationtime);
+      $(temp).find(".recipeInformationDifficultyText").text(input.difficulty);
       
           
 

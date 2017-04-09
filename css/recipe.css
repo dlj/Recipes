@@ -1,0 +1,42 @@
+.recipeContainer {
+    width:250px;
+    height:250px;
+    margin:20px; 
+    position:relative;
+    float:left;
+    border:1px solid darkgrey;
+    display:flex;
+    flex-direction: column;   
+    padding:5px;
+
+}
+
+.recipeContainer .recipeImage {
+    flex:6 1;
+    height:200px;
+    background-image:url('http://www.pethealthnetwork.com/sites/default/files/why-should-i-spay-my-new-kitten-138101629.jpg ');
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+.recipeContainer .recipeInformationContainer {
+    flex:1 1;
+    display:flex;
+    flex-flow: row wrap;
+    margin-top: 5px;
+}
+
+.recipeContainer .recipeInformationContainer .recipeInformationName 
+{
+    flex:2 100%;
+}
+
+.recipeContainer .recipeInformationContainer .recipeInformationDifficulty
+{
+    flex:1 auto;
+    text-align: end;
+}
+.recipeContainer .recipeInformationContainer .recipeInformationTime
+{
+    flex:1 auto;
+}
