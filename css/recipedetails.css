@@ -1,3 +1,30 @@
 #recipedetailcontent {
   margin:auto;
 }
+
+.recipedetailwalkthroughflex {
+  display: flex;
+  position: relative;
+  margin-top:5px; 
+}
+.recipedetailwalkthroughflex .recipedetailingredients
+{
+  flex: 2;
+  background-color: #f2f2f2;
+  padding:3px;
+}
+
+.recipedetailwalkthroughflex .recipedetailwalkthroughspacer 
+{
+  flex: 1;
+  background-color:white;
+}
+.recipedetailwalkthroughflex .recipedetailingredientslist {
+
+}
+.recipedetailwalkthroughflex .recipedetailguides
+{
+  flex: 5;
+   background-color: #f2f2f2;
+  padding:3px;
+}

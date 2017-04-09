@@ -3,7 +3,7 @@
 
  function changePage(String $page) 
  {
-     echo require("pages/".$page.".php");
+     require("pages/".$page.".php");
  }
 
 function checkQueryString()
