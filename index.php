@@ -1,5 +1,29 @@
 <?php
  include("services/objectDefinition.php");
+
+ function changePage(String $page) 
+ {
+     echo require("pages/".$page.".php");
+ }
+
+function checkQueryString()
+{
+    $page = "recipes";
+    $params = [];
+    parse_str($_SERVER['QUERY_STRING'], $params);
+
+    if (count($params) > 0) {
+        foreach ($params as $key => $value) {
+            if ($key == "p") 
+            {
+                $page = $value;
+                break;
+            }
+        } 
+    }
+    changePage($page);
+}
+
 ?>
 
 <html>
@@ -22,7 +46,7 @@
         <div class="topMenuItem"> Food Planner </div>
     </div>
     <div id="mainContent">
-     <?php require("pages/recipes.php") ?>
+     <?php checkQueryString() ?>
 
     </div>
 </body>
