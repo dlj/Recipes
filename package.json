@@ -1,6 +1,16 @@
 {
   "dependencies": {
     "@types/jquery": "^2.0.41",
-    "jquery": "^3.2.1", "typescript": "^2.1.6"
+    "jquery": "^3.2.1"
+  },
+  "devDependencies": {
+    "ts-loader": "^2.0.3",
+    "typings": "^2.1.1",
+    "webpack": "^2.3.3",
+    "typescript": "^2.2.2"
+  },
+  "scripts": {
+    "prepublish": "typings install",
+    "watch": "webpack --progress --colors --watch"
   }
 }

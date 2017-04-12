@@ -1,14 +1,17 @@
 {
     "compilerOptions": {
         "target": "es5",
-        "module": "amd",
+        "module": "commonjs",
         "sourceMap": true,
-        "rootDir": "source",
+        "rootDir": "source/",
         "outDir": "javascript/",
-        "moduleResolution": "node",
-        "types": ["jquery"]
+        "emitDecoratorMetadata": true,
+        "experimentalDecorators": true
         
     },
+      "exclude": [
+        "node_modules"
+    ],
         "include": [
         "source/*"
     ]

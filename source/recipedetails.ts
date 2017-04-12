@@ -1,5 +1,4 @@
-/// <reference path="./defaultPage.ts" />
-import { defaultPage } from "defaultPage";
+import defaultPage from './defaultPage'
 
 class recipeDetails extends defaultPage {
     templateTag  = $("#recipedetailwalkthroughTemplate").prop("content");
@@ -10,7 +9,7 @@ class recipeDetails extends defaultPage {
         $.ajax({
             url: "/services/recipe",
             type: "GET",
-            data: { id : 3 }
+            data: { "id" : id }
         }).done(function(tmpData) {
             //this.populateData(tmpData);
             $("#recipedetailtopName > span").text(tmpData.name);
@@ -24,7 +23,7 @@ class recipeDetails extends defaultPage {
         $.ajax({
             url: "/services/recipe",
             type: "GET",
-            data: { id : 3 }
+            data: { id : 2 }
         }).done(function(data) {
 
         });
@@ -38,7 +37,8 @@ class recipeDetails extends defaultPage {
 }
 
 var x = new recipeDetails();
-x.getRecipe(this.id); 
+x.getRecipe(x.getId()); 
+console.log();
 x.createRecipeDOM(null);
 x.createRecipeDOM(null);
 x.createRecipeDOM(null);
