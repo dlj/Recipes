@@ -1,10 +1,13 @@
 {
     "compilerOptions": {
         "target": "es5",
-        "module": "commonjs",
+        "module": "amd",
         "sourceMap": true,
         "rootDir": "source",
-        "outDir": "javascript/"
+        "outDir": "javascript/",
+        "moduleResolution": "node",
+        "types": ["jquery"]
+        
     },
         "include": [
         "source/*"

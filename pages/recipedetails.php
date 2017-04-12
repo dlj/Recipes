@@ -12,21 +12,38 @@
                     <li> assaddsa asd sa </li>
                 </ul>
         </div>
-        <div class="recipedetailwalkthroughspacer"> </div>
+        <div class="spacer"> </div>
         <div class="recipedetailguides">
         </div>
     </div>
 </template>
 
-    <div id="recipedetailcontent" style='width:80%;height:100%;margin:auto'>
-        <div id="recipedetailtop" style='width:calc(100% - 10px);height:400px;margin:5px;top:5px;position:relative;border-bottom: 1px solid lightgrey;padding-bottom: 5px;'>
-            <div style="height:32px;line-height:32px;border-bottom: 1px lightgrey solid;text-align:center;font-style:italic;font-size:16px"> <span> Kylling med tandspyd </span> </div>
-            <div style=";background-color:#f2f2f2;background-image:url(http://www.topinspired.com/wp-content/uploads/2013/08/healthy-food-recipes-for-kids_01.jpg);background-repeat:no-repeat;height:calc(100% - 64px);background-size: contain;width:100%;background-position:50%"> </div>
-            <div style="height:32px;border-top: 1px lightgrey solid;line-height:32px"> 
-     
-        <span style="border-right:1px solid lightgrey;margin-right:10px;padding-right:10px"> Tilberedning 100 timer </span>
-           <span style="border-right:1px solid lightgrey;margin-right:10px;padding-right:10px"> Sidst brugt for 20 år siden </span>
-       <span> 2 personer </span>
+    <div id="recipedetailcontent">
+        <div id="recipedetailtop">
+            <div id="recipedetailtopName"> <span> asdas </span> </div>
+            <div id="recipedetailtopImage"> </div>
+            <div id="recipedetailtopDetails"> 
+                <div class="difficulty"><span> Difficulty </span> <span> 5 out of 10 </span>  </div>
+                <div class="time"><span>100 minutes</span> <span>duration</span>  </div>
+                <div class="peopleforquantity">
+                    <span> For </span> 
+                    <!-- Could have been made in Javascript... but... meh -->
+                    <select name="quantity"> 
+                            <option value="1">1</option>
+                            <option value="2" selected>2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                            <option value="5">5</option>
+                            <option value="6">6</option>
+                            <option value="7">7</option>
+                            <option value="8">8</option>
+                            <option value="9">9</option>
+                            <option value="10">10</option>
+                    </select>
+                    <span> people </span> </div>
+                <div class="spacer"> </div>
+                <div class="lastused" > <span> Last used </span> <span> 10 days ago </span>  </div>
+            </div>
         </div>
         <div style='display:flex;margin:5px'>
             <div style='flex:4;flex-shrink:1' id="recipedetailsection"> 

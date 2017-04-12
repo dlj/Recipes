@@ -1,26 +1,33 @@
-class recipeDetails {
-    templateTag  = $("#recipedetailwalkthroughTemplate").prop("content");
-    public id : number = null;
+/// <reference path="./defaultPage.ts" />
+import { defaultPage } from "defaultPage";
 
-    public constructor()
-    {
-        var urlParams = new URLSearchParams(window.location.search);
-        if (urlParams.has("id"))
-            this.id =  parseInt(urlParams.get("id"))
-        else
-            alert("id not defined");
-    }
+class recipeDetails extends defaultPage {
+    templateTag  = $("#recipedetailwalkthroughTemplate").prop("content");
+  
 
     public getRecipe(id: number): any {
         
         $.ajax({
-            url: "/services/recipes",
+            url: "/services/recipe",
             type: "GET",
-            data: { id : 3}
+            data: { id : 3 }
         }).done(function(tmpData) {
+            //this.populateData(tmpData);
+            $("#recipedetailtopName > span").text(tmpData.name);
+            $("#recipedetailtopDetails .difficulty span:last-child").text(tmpData.difficulty);
+            $("#recipedetailtopDetails .time span:last-child").text(tmpData.difficulty);
+            $("#recipedetailtopDetails .peopleforquantity span:last-child").text(tmpData.difficulty);
+            $("#recipedetailtopDetails .lastused span:last-child").text(tmpData.difficulty);
+
 
         });
+        $.ajax({
+            url: "/services/recipe",
+            type: "GET",
+            data: { id : 3 }
+        }).done(function(data) {
 
+        });
     }
 
       public createRecipeDOM(input) {

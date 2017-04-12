@@ -1,5 +1,76 @@
 #recipedetailcontent {
-  margin:auto;
+  width:80%;
+  height:100%;
+  margin:auto
+}
+
+#recipedetailtop {
+  width:calc(100% - 10px);
+  height:50%;
+  top:5px;
+  position:relative;
+  border-bottom: 1px solid lightgrey;
+  display: flex;
+  flex-direction: column;
+}
+
+#recipedetailtopName 
+{
+  line-height:48px;
+  border-bottom: 1px lightgrey solid;
+  text-align:center;
+  font-style:italic;
+  font-size:16px;
+  flex: 0 1 48px;
+}
+
+#recipedetailtopImage
+{
+  background-color:#f2f2f2;
+ /* background-image:url(http://www.topinspired.com/wp-content/uploads/2013/08/healthy-food-recipes-for-kids_01.jpg); */
+  background-repeat:no-repeat;
+  height:calc(100% - 64px);
+  background-size: contain;
+  width:100%;
+  background-position:50%;
+   flex: 2 0;
+}
+
+#recipedetailtopDetails 
+{
+  border-top: 1px lightgrey solid;
+  line-height:38px;
+  flex: 0 1 48px;
+  display:flex;
+  padding: 5px 0;
+}
+
+#recipedetailtopDetails > div {
+  flex: 0 1 15em;
+  text-align: center;
+  border-right: 1px solid lightgrey;
+}
+#recipedetailtopDetails .difficulty {
+  
+  border-left: 1px solid lightgrey;
+}
+
+#recipedetailtopDetails .time {
+
+}
+
+#recipedetailtopDetails .spacer {
+  flex: 8 1 0%;
+
+}
+
+
+#recipedetailtopDetails .lastused {
+
+}
+
+#recipedetailtopDetails .peopleforquantity {
+  
 }
 
 .recipedetailwalkthroughflex {
@@ -14,9 +85,9 @@
   padding:3px;
 }
 
-.recipedetailwalkthroughflex .recipedetailwalkthroughspacer 
+.recipedetailwalkthroughflex .spacer 
 {
-  flex: 1;
+  flex: 0 0 1em;
   background-color:white;
 }
 .recipedetailwalkthroughflex .recipedetailingredientslist {
