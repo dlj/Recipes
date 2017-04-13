@@ -3,7 +3,7 @@ class Recipes {
 
     public getRecipes(): JQueryPromise<any> {
         return $.ajax({
-            url: "/services/recipe",
+            url: "/services/recipes",
             type: "GET",});
     }
 

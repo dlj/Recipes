@@ -1,7 +1,7 @@
 <?php
 require("service.php");
 
-class ingredient extends service
+class ingredients extends service
 {
 
     public $objectDefinitionType = "ingredientObject";

@@ -1,63 +1,84 @@
 import defaultPage from './defaultPage'
-import {DataObjects} from './dataobjects'
+import { DataObjects } from './dataobjects'
 
 class recipeDetails extends defaultPage {
-    templateTag  = $("#recipedetailwalkthroughTemplate").prop("content");
-  
-    public getRecipe(id: number): JQueryPromise<any> {  
-        return $.ajax({
-            url: "/services/recipe",
-            type: "GET",
-            data: { "id" : id }
+    templateTag = $("#recipedetailwalkthroughTemplate").prop("content");
+
+    public constructor() {
+        super();
+        this.load();
+    }
+
+    public load() {
+        $.get({ url: "/services/recipe", data: { "id": this.getId() } }).done(data => {
+            this.createRecipeDOM(data);
         });
 
- /*       $.ajax({
-            url: "/services/recipes_ingredients",
-            type: "GET",
-            data: { "recipe_id" : id }
-        }).done(function(data) {
+        this.getRecipeGroup(this.getId()).done(data => {
+            if (data == undefined)
+                return;
 
-        }); */
+            data.forEach(element => {
+                let tmpGroup = element as DataObjects.RecipeGroup;
+                /*
+                this.getReceiptDetails(tmpGroup.id).done(data => {
+                    // Please error check this better
+                    let ing = data[0] as DataObjects.Ingredient;
+                    let recing = data[1] as DataObjects.RecipeIngredient;
+                    let unit = data[2] as DataObjects.Unit;
+                    this.createRecipeGroupDOM(tmpGroup, ing, unit, recing);
+                    });
+            */
+            });
+            
+            // x.createRecipeDOM(data);
+        });
     }
-    public getRecipetGroup(recipeId : number) : JQueryPromise<any>
-    {
+
+    public getRecipeGroup(recipeId: number): JQueryPromise<any> {
         return $.ajax({
             url: "/services/recipegroup",
             type: "GET",
-            data: { "recipe_id" : recipeId }
+            data: { "recipe_id": recipeId }
         });
     }
 
-    public getReceiptDetails(receiptGroupId : number) : JQueryPromise<any>
-    {
-        return $.when()
+    public getReceiptDetails(receiptGroupId: number): Promise<{ ingredients : DataObjects.Ingredient, recipeingredients : DataObjects.RecipeIngredient, unit : DataObjects.Type }> {
+        return new Promise<any>((resolve) => {
+            var rtn = { ingredients : undefined, recipeingredients : undefined, type : undefined };
+
+                    $.get({ url: "/services/ingredients", data: { "id": this.getId() } }).done(data => {
+            this.createRecipeDOM(data);
+        });
+
+                $.get({ url: "/services/recipe_ingredients", data: { "id": this.getId() } }).done(data => {
+            this.createRecipeDOM(data);
+        });
+
+                $.get({ url: "/services/units", data: { "id": this.getId() } }).done(data => {
+            this.createRecipeDOM(data);
+        });
+            resolve(rtn);
+        });
+     
+        //return $.when($.get({ url: "/services/recipe", data: { "id": 1 } }));
     }
-      public createRecipeDOM(data : DataObjects.Recipe) {
+    public createRecipeDOM(data: DataObjects.Recipe) {
 
         $("#recipedetailtopName > span").text(data.name);
         $("#recipedetailtopDetails .difficulty span:last-child").text(data.difficulty);
         $("#recipedetailtopDetails .time span:last-child").text(data.difficulty);
-      //  $("#recipedetailtopDetails .peopleforquantity span:last-child").text(data.difficulty);
+        //  $("#recipedetailtopDetails .peopleforquantity span:last-child").text(data.difficulty);
         $("#recipedetailtopDetails .lastused span:last-child").text(data.difficulty);
 
-      }
-  public createRecipeGroupDOM(data : DataObjects.RecipeGroup) 
-  {
-      let temp = $(this.templateTag).clone();  
-      $(temp).find(".recipedetailguides").text(data.instruction);
-      $("#recipedetailsection").append(temp);
-  }
+    }
+    public createRecipeGroupDOM(group: DataObjects.RecipeGroup, ingredients: DataObjects.Ingredient, units: DataObjects.Unit, xxx: DataObjects.RecipeIngredient) {
+        let temp = $(this.templateTag).clone();
+        $(temp).find(".recipedetailguides").text(group.instruction);
+        $("#recipedetailsection").append(temp);
+    }
 }
 
 var x = new recipeDetails();
-x.getRecipe(x.getId()).done(data => {
-    x.createRecipeDOM(data);
-});
-x.getRecipetGroup(x.getId()).done(data => {
-    if (data != null) {
-        data.forEach(element => {
-            x.createRecipeGroupDOM(element);
-        });
-    }
-   // x.createRecipeDOM(data);
-});
+
+
