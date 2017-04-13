@@ -39,7 +39,7 @@ class recipe_ingredientsObject extends objectDefinition
   public $id;        
   public $amount;
   public $text;
-  public $ingredients_id;
+  public $ingredient_id;
   public $recipe_id;
   public $recipegroup_id;   
   public $type_id;

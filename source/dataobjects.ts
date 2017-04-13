@@ -7,7 +7,7 @@ export module DataObjects {
 
     export class RecipeGroup {
         public id: number;
-        public recipId: number;
+        public recipe_id: number;
         public group: string;
         public instruction: string;
         public sortindex: number;
@@ -22,7 +22,7 @@ export module DataObjects {
         public id : number;
         public amount : number;
         public text : string;
-        public ingredients_id : number;
+        public ingredient_id : number;
         public recipe_id : number;
         public recipegroup_id : number;
         public type_id : number;
