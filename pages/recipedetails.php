@@ -20,7 +20,7 @@
 
     <div id="recipedetailcontent">
         <div id="recipedetailtop">
-            <div id="recipedetailtopName"> <span> asdas </span> </div>
+            <div id="recipedetailtopName"> <span> </span> </div>
             <div id="recipedetailtopImage"> </div>
             <div id="recipedetailtopDetails"> 
                 <div class="difficulty"><span> Difficulty </span> <span> 5 out of 10 </span>  </div>
@@ -45,12 +45,12 @@
                 <div class="lastused" > <span> Last used </span> <span> 10 days ago </span>  </div>
             </div>
         </div>
-        <div style='display:flex;margin:5px'>
+        <div id="recipedetailscontainer">
             <div style='flex:4;flex-shrink:1' id="recipedetailsection"> 
            
             </div>
-            <div style='flex:1;flex-shrink:0'>
-                <div style='background-color:yellow;margin:5px 0;width:calc(100% - 5px);height:100px'></div>
+            <div style='flex:1;flex-shrink:0;display:none'>
+                <div style=';margin:5px 0;width:calc(100% - 5px);height:100px'></div>
             </div>
         </div>
         <div id="recipedetailpicturebox">

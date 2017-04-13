@@ -5,8 +5,7 @@
 }
 
 #recipedetailtop {
-  width:calc(100% - 10px);
-  height:50%;
+  height:75%;
   top:5px;
   position:relative;
   border-bottom: 1px solid lightgrey;
@@ -20,27 +19,28 @@
   border-bottom: 1px lightgrey solid;
   text-align:center;
   font-style:italic;
-  font-size:16px;
+  font-size:18px;
   flex: 0 1 48px;
 }
 
 #recipedetailtopImage
 {
-  background-color:#f2f2f2;
- /* background-image:url(http://www.topinspired.com/wp-content/uploads/2013/08/healthy-food-recipes-for-kids_01.jpg); */
+  background-color:#f8f8f8;
+  background-image:url(http://www.topinspired.com/wp-content/uploads/2013/08/healthy-food-recipes-for-kids_01.jpg);
   background-repeat:no-repeat;
   height:calc(100% - 64px);
   background-size: contain;
   width:100%;
   background-position:50%;
-   flex: 2 0;
+  flex: 2 0;
+  margin : 5px 0;
 }
 
 #recipedetailtopDetails 
 {
   border-top: 1px lightgrey solid;
-  line-height:38px;
-  flex: 0 1 48px;
+  line-height:28px;
+  flex: 0 1 38px;
   display:flex;
   padding: 5px 0;
 }
@@ -98,4 +98,9 @@
   flex: 5;
    background-color: #f2f2f2;
   padding:3px;
+}
+
+#recipedetailscontainer 
+{
+  padding-top:5px;
 }
