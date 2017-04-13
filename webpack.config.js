@@ -1,15 +1,17 @@
+var path = require("path");
 module.exports = {
     entry:{
-        index : '/source/index.ts',
-        recipedetails : '/source/recipedetails.ts',
-        recipes : '/source/recipes.ts'
+        index : './source/index.ts',
+        recipedetails : './source/recipedetails.ts',
+        recipes : './source/recipes.ts'
     },
     output: {
-        path: "/javascript",
-       filename: '[name].js'
+        path: path.join(__dirname,"javascript"),
+          filename: '[name].js',
     },
+    devtool: 'source-map',
     resolve: {
-        modules: ["/source"],
+        modules: ["./source"],
         // Add `.ts` and `.tsx` as a resolvable extension.
         extensions: ['.ts','.js']
     },
