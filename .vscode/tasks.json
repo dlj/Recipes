@@ -6,7 +6,7 @@
 		"--display-modules",
 		"--progress",
         "--colors",
-        "--display-error-details",
+        "--display-error-details"
 	],
 	"echoCommand": true,
 	"tasks": [
