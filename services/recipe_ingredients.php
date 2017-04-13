@@ -1,14 +1,14 @@
 <?php
 require("service.php");
 
-class recipes_ingredients extends service
+class recipe_ingredients extends service
 {
 
-    public $objectDefinitionType = "recipes_ingredientsObject";
+    public $objectDefinitionType = "recipe_ingredientsObject";
 
     function __construct()
     {
-        $this->table = 'recipes_ingredients';
+        $this->table = 'recipe_ingredients';
         parent::__construct();
     }
     
@@ -34,7 +34,7 @@ class recipes_ingredients extends service
 */
 
 }
-class recipes_ingredientsObject extends objectDefinition
+class recipe_ingredientsObject extends objectDefinition
 {
   public $id;        
   public $amount;
@@ -42,5 +42,6 @@ class recipes_ingredientsObject extends objectDefinition
   public $ingredients_id;
   public $recipe_id;
   public $recipegroup_id;   
+  public $type_id;
 }
 ?>

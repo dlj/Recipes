@@ -8,7 +8,7 @@ class recipe extends service
 
     function __construct()
     {
-        $this->table = 'recipes';
+        $this->table = 'recipe';
         parent::__construct();
     }
     
