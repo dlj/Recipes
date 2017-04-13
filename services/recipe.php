@@ -42,4 +42,6 @@ class recipeObject extends objectDefinition
 {
     public $id;
     public $name;
+    public $description;
+    public $difficulty;
 }

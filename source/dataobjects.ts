@@ -3,6 +3,7 @@ export module DataObjects {
         public id: number;
         public name: string;
         public difficulty: number;
+        public description: string;
     }
 
     export class RecipeGroup {
