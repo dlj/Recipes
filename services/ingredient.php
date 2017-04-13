@@ -37,11 +37,8 @@ class ingredient extends service
 class ingredientObject extends objectDefinition
 {
   public $id;        
-  public $amount;
-  public $text;
-  public $ingredients_id;
-  public $recipe_id;
-  public $recipegroup_id;   
+  public $name;
   public $type_id;
+  public $price_avg;
 }
 ?>

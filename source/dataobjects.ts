@@ -16,16 +16,29 @@ export module DataObjects {
     }
 
     export class Ingredient {
-
+        public id: number;
+        public name: string;
+        public type_id: number;
+        public price_avg: number;
     }
 
     export class RecipeIngredient {
-        public id : number;
-        public amount : number;
-        public text : string;
-        public ingredient_id : number;
-        public recipe_id : number;
-        public recipegroup_id : number;
-        public type_id : number;
+        public id: number;
+        public amount: number;
+        public text: string;
+        public ingredient_id: number;
+        public recipe_id: number;
+        public recipegroup_id: number;
+        public type_id: number;
+    }
+
+    export class Type {
+        public id: number;
+        public name: string;
+    }
+
+    export class Unit {
+        public id: number;
+        public name: string;
     }
 }
