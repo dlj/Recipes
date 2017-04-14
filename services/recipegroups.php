@@ -1,7 +1,7 @@
 <?php
 require("service.php");
 
-class recipegroup extends service
+class recipegroups extends service
 {
 
     public $objectDefinitionType = "recipegroupObject";

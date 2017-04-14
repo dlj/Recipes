@@ -1,7 +1,7 @@
 <?php
 require("service.php");
 
-class type extends service
+class types extends service
 {
 
     public $objectDefinitionType = "typeObject";
