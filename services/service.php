@@ -18,30 +18,78 @@ class service
     {
         return true;
     }
-    public function get(objectDefinition $object = null)
+
+    public function get($object = null)
     {
         $rtn = [];
-
+        $returnSingle = false;
+        // If empty, just return everything
         if (is_null($object)) {
             $rtn = $this->db->select($this->table, array())->result_array();
+        }
+        // Semi batch loading.
+        // this is only avalible with id property
+        else if (is_array($object)) {
+          $tmpId = $this->createSqlInExpression($object);
+
+            $rtn = $this->db->select($this->table, $tmpId)->result_array();
         } else {
 
             $queryArray = array_filter((array)$object, function($value, $key) {
                 return $value != null;
             },ARRAY_FILTER_USE_BOTH);
-
-            $rtn = $this->db->select($this->table, $queryArray)->result_array();
-            if ($rtn != null && count($rtn) == 1)
-            { 
-                return $this->createObject($rtn[0]);
+            if (array_key_exists('id',$queryArray)) {
+                $returnSingle = true;
             }
 
-            foreach ($rtn as $value) {
-                $value = $this->createObject($value);;
-}
-            return $rtn;
+            $rtn = $this->db->select($this->table, $queryArray)->result_array();
         }
+
+            if ($returnSingle == true) {
+                $rtn = $this->createObject($rtn[0]);
+            }
+            else
+            {
+                foreach ($rtn as $value) {
+                    $value = $this->createObject($value);
+                }
+            }
+            return $rtn;
     }
+
+    public function createSqlInExpression($obj) : string
+    {
+        $tmpRtnAry = [];
+        $rtn = "";
+        $firstIteration = true;
+
+        foreach ($obj as $items) {
+            foreach ($items as $key => $item) {
+                if ($item != null) {
+                    if (!array_key_exists($key,$tmpRtnAry)) {
+                        $tmpRtnAry[$key] = [];
+                    }
+                    if (!in_array($item,$tmpRtnAry[$key]))
+                        array_push($tmpRtnAry[$key], $item);
+                }
+            }
+        }
+        
+        foreach ($tmpRtnAry as $key => $tmp) {
+           $imp = implode(', ', array_map(function($o) {
+              return $o;
+            }, $tmp));
+
+            if (!$firstIteration) {
+                $rtn .= " or ";
+            }
+            $rtn .= $key." in (".$imp.")";
+            $firstIteration = false;
+        }
+
+
+        return $rtn;
+    } 
 
     public function post(objectDefinition $object)
     {
