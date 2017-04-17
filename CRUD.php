@@ -50,7 +50,7 @@ if (array_key_exists('HTTP_X_HTTP_OVERRIDE', $_SERVER) )
 $resourceId = !empty($resourceId) ? explode("/", $resourceId) : array();
 
 if ((include $services.'/'.$resource.'.php') !== 1) {
-    die("DIE");
+    die("Service ".$resource." not found");
 }
 
 if (class_exists($resource)) {
