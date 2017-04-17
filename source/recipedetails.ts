@@ -20,18 +20,12 @@ class recipeDetails extends defaultPage {
 
             data.forEach(element => {
                 let tmpGroup = element as DataObjects.RecipeGroup;
-            
-                
-                this.getReceiptDetails(tmpGroup.id);
-                /*
-                (data => {
-                    // Please error check this better
-                    let ing = data[0] as DataObjects.Ingredient;
-                    let recing = data[1] as DataObjects.RecipeIngredient;
-                    let unit = data[2] as DataObjects.Unit;
-                    this.createRecipeGroupDOM(tmpGroup, ing, unit, recing);
-                    });
-*/            
+
+
+                this.getReceiptDetails(tmpGroup.id).then(details => 
+                {
+                    this.createRecipeGroupDOM(tmpGroup, details.ingredients, details.unit, details.recipeingredients);
+                });
             });
 
             // x.createRecipeDOM(data);
@@ -49,51 +43,55 @@ class recipeDetails extends defaultPage {
     // This could be put into a view on the server part. But... not that needed for the scale of this
     public getReceiptDetails(receipGroupId: number): Promise<{ ingredients: DataObjects.Ingredient, recipeingredients: DataObjects.RecipeIngredient, unit: DataObjects.Type }> {
         return new Promise<any>((resolve) => {
-            var rtn = { ingredients: undefined, recipeingredients: undefined, type: undefined };
+            var rtn = { ingredients: undefined, recipeingredients: undefined, units: undefined };
 
-            $.get({ url: "/services/recipe_ingredients", data: { "recipegroup_id": receipGroupId }}).done(data => {
-                    var test = [];
-                    data.forEach(element => {
-                        test.push({"id" : element.ingredient_id});
-                    });
-                        if (test.length > 0)
-                        {
-                  $.ajax({ url: "/services/ingredients[]", type : "post", data: JSON.stringify(test), headers:{ "X-http-override" : "GET" } } ).done(data => {
-                    this.createRecipeDOM(data);
-                  });
-                        }
-                
-/*
-                $.get({ url: "/services/ingredients", data: { "id": this.getId() } }).done(data => {
-                    this.createRecipeDOM(data);
-                });
+            $.get({ url: "/services/recipe_ingredients", data: { "recipegroup_id": receipGroupId } }).done(recing => {
+                rtn.recipeingredients = recing;
 
-                $.get({ url: "/services/units", data: { "id": this.getId() } }).done(data => {
-                    this.createRecipeDOM(data);
+                var ingredientIds: any[] = [];
+                var unitIds: any[] = [];
+
+                recing.forEach(element => {
+                    ingredientIds.push({ "id": element.ingredient_id });
+                    unitIds.push({ "id": element.unit_id });
                 });
-                */
+                // No need to continue. And if there are no ingretdients, there are no units
+                if (ingredientIds.length == 0) {
+                    resolve(rtn);
+                    return;
+                }
+
+                $.when($.ajax({ url: "/services/ingredients[]", type: "post", data: JSON.stringify(ingredientIds), headers: { "X-http-override": "GET" } }).done(ing => {
+                    rtn.ingredients = ing;
+                 }),
+                    $.ajax({ url: "/services/units[]", type: "post", data: JSON.stringify(unitIds), headers: { "X-http-override": "GET" } }).done(unit => {
+                        rtn.units = unit;
+                 })).done(function() {
+                     resolve(rtn);
+                 })
+              
             });
 
 
-            resolve(rtn);
-        });
+        
+    });
 
-        //return $.when($.get({ url: "/services/recipe", data: { "id": 1 } }));
-    }
+    //return $.when($.get({ url: "/services/recipe", data: { "id": 1 } }));
+}
     public createRecipeDOM(data: DataObjects.Recipe) {
 
-        $("#recipedetailtopName > span").text(data.name);
-        $("#recipedetailtopDetails .difficulty span:last-child").text(data.difficulty);
-        $("#recipedetailtopDetails .time span:last-child").text(data.difficulty);
-        //  $("#recipedetailtopDetails .peopleforquantity span:last-child").text(data.difficulty);
-        $("#recipedetailtopDetails .lastused span:last-child").text(data.difficulty);
+    $("#recipedetailtopName > span").text(data.name);
+    $("#recipedetailtopDetails .difficulty span:last-child").text(data.difficulty);
+    $("#recipedetailtopDetails .time span:last-child").text(data.difficulty);
+    //  $("#recipedetailtopDetails .peopleforquantity span:last-child").text(data.difficulty);
+    $("#recipedetailtopDetails .lastused span:last-child").text(data.difficulty);
 
-    }
+}
     public createRecipeGroupDOM(group: DataObjects.RecipeGroup, ingredients: DataObjects.Ingredient, units: DataObjects.Unit, xxx: DataObjects.RecipeIngredient) {
-        let temp = $(this.templateTag).clone();
-        $(temp).find(".recipedetailguides").text(group.instruction);
-        $("#recipedetailsection").append(temp);
-    }
+    let temp = $(this.templateTag).clone();
+    $(temp).find(".recipedetailguides").text(group.instruction);
+    $("#recipedetailsection").append(temp);
+}
 }
 
 var x = new recipeDetails();

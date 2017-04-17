@@ -29,7 +29,7 @@ export module DataObjects {
         public ingredient_id: number;
         public recipe_id: number;
         public recipegroup_id: number;
-        public type_id: number;
+        public unit_id: number;
     }
 
     export class Type {
