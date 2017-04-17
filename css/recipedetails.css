@@ -76,13 +76,43 @@
 .recipedetailwalkthroughflex {
   display: flex;
   position: relative;
-  margin-top:5px; 
+  margin-top:5px;
+  opacity: 0;
 }
+
 .recipedetailwalkthroughflex .recipedetailingredients
 {
   flex: 2;
   background-color: #f2f2f2;
   padding:3px;
+}
+
+.recipedetailingredients .list {
+  display: flex;
+  flex-direction: column;
+}
+.recipedetailingredients .listitem 
+{
+  margin:2px 0;
+  display:flex;
+}
+
+.recipedetailingredients .listitem span 
+{
+  margin:1px 2px;
+}
+.recipedetailingredients .listitem .amount
+{
+  flex: 1;
+}
+.recipedetailingredients .listitem .unit
+{
+  flex: 1;
+}
+
+.recipedetailingredients .listitem .name 
+{
+  flex: 5 1;
 }
 
 .recipedetailwalkthroughflex .spacer 

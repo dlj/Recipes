@@ -7,9 +7,8 @@
 <template id="recipedetailwalkthroughTemplate">
  <div class="recipedetailwalkthroughflex">
         <div class="recipedetailingredients" >
-                <ul class="recipedetailingredientslist">
-                    <li> assaddsa asd sa </li>
-                    <li> assaddsa asd sa </li>
+                <ul class="list">
+
                 </ul>
         </div>
         <div class="spacer"> </div>
@@ -17,7 +16,13 @@
         </div>
     </div>
 </template>
-
+<template id="recipedetailingredientsitemTemplate">
+        <li class="listitem">
+            <span class="amount"> </span>
+            <span class="unit"> </span>
+            <span class="name"> </span>
+        </li>
+</template>
     <div id="recipedetailcontent">
         <div id="recipedetailtop">
             <div id="recipedetailtopName"> <span> </span> </div>
