@@ -30,6 +30,7 @@ export module DataObjects {
         public recipe_id: number;
         public recipegroup_id: number;
         public unit_id: number;
+        public sortindex: number;
     }
 
     export class Type {

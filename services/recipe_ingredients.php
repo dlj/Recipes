@@ -43,5 +43,6 @@ class recipe_ingredientsObject extends objectDefinition
   public $recipe_id;
   public $recipegroup_id;   
   public $unit_id;
+  public $sortindex;
 }
 ?>
