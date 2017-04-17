@@ -32,7 +32,7 @@ class recipeDetails extends defaultPage {
 
                 this.getReceiptDetails(tmpGroup.id).then(details => 
                 {
-                    this.createRecipeGroupDOM(tmpGroup, details.ingredients, details.unit, details.recipeingredients);
+                    this.createRecipeGroupDOM(tmpGroup, details.ingredients, details.units, details.recipeingredients);
                     iterate(ary);
                 });
             };
@@ -52,7 +52,7 @@ class recipeDetails extends defaultPage {
     }
 
     // This could be put into a view on the server part. But... not that needed for the scale of this
-    public getReceiptDetails(receipGroupId: number): Promise<{ ingredients: DataObjects.Ingredient[], recipeingredients: DataObjects.RecipeIngredient[], unit: DataObjects.Type[] }> {
+    public getReceiptDetails(receipGroupId: number): Promise<{ ingredients: DataObjects.Ingredient[], recipeingredients: DataObjects.RecipeIngredient[], units: DataObjects.Unit[] }> {
         return new Promise<any>((resolve) => {
             var rtn = { ingredients: undefined, recipeingredients: undefined, units: undefined };
 
@@ -113,8 +113,10 @@ class recipeDetails extends defaultPage {
         var tmpItem = $(this.listitemtemplateTag).clone();
         tmpItem.find(".name").text(ingredientsLookup[i.ingredient_id].name);
         tmpItem.find(".amount").text(i.amount);
+
         if (unitLookup.hasOwnProperty(i.unit_id))
-            tmpItem.find(".unit").text(unitLookup[i.unit_id]);
+            tmpItem.find(".unit").text(unitLookup[i.unit_id].symbol);
+
         $(ingredientList).append(tmpItem);        
     });
 

@@ -42,4 +42,5 @@ class unitObject extends objectDefinition
 {
     public $id;
     public $name;
+    public $symbol;
 }
