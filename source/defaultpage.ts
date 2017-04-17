@@ -21,6 +21,20 @@ export default class defaultPage {
         }
     }
 
+    public ArrayToJson<T>(ary : any[], key:string) : { string : T } 
+    {
+        let rtn = {} as { string : T };
+        
+        if (ary == undefined)
+            return rtn;
+
+        ary.forEach(a => {
+            rtn[a[key]] = a;
+        });
+
+        return rtn;
+    }
+
     public getId = () : number => {
         return this.id;
     }
