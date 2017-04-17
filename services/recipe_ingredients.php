@@ -42,6 +42,6 @@ class recipe_ingredientsObject extends objectDefinition
   public $ingredient_id;
   public $recipe_id;
   public $recipegroup_id;   
-  public $type_id;
+  public $unit_id;
 }
 ?>
