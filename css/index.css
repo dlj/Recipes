@@ -29,3 +29,17 @@ div
     float:left;
     margin:9px;
 }
+
+.defaultButton {
+    height: 40px;
+    width: 100px;
+    color: white;
+    font-weight: bold;
+    border-radius: 4px;
+    line-height: 40px;
+    text-align: center;
+}
+
+.greenBackground {
+    background-color: #5cb85c;
+}
