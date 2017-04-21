@@ -41,10 +41,8 @@ function checkQueryString()
 <body>
 
     <div id="topMenu"> 
-        <div class="topMenuItem"> Recipes </div>
-        <div class="topMenuItem"> Favourites </div>
-        <div class="topMenuItem"> Tools </div>
-        <div class="topMenuItem"> Food Planner </div>
+        <div class="topMenuItem"><span> Recipes </span></div>
+        <div id="foodplan" class="topMenuItem"> <span> Planning </span> </div>
     </div>
     <div id="mainContent">
      <?php checkQueryString() ?>

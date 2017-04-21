@@ -20,14 +20,27 @@ div
 #topMenu {
     position: fixed;
     z-index:666;
-    background-color: rgb(155, 195, 148);
+    background-color: indianred;
     border-bottom:1px solid black;
     height: 36px;
     width:100%;
+    color: white;
+    font-weight: bold;
 }
 #topMenu .topMenuItem {
     float:left;
     margin:9px;
+}
+
+#foodplan {
+    height: 30px;
+    line-height: 30px;
+    width:100px;
+    float:right !important;
+    margin: 3px 5px 2px 2px !important;
+    background-color: darkgrey;
+    text-align: center;
+    border-radius: 3px;
 }
 
 .defaultButton {
@@ -42,4 +55,8 @@ div
 
 .greenBackground {
     background-color: #5cb85c;
+}
+
+.greenBackground:hover {
+    background-color: #1ca81c;
 }
