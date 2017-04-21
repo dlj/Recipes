@@ -4,6 +4,7 @@ import { DataObjects } from './dataobjects'
 class recipeDetails extends defaultPage {
     templateTag = $("#recipedetailwalkthroughTemplate").prop("content");
     listitemtemplateTag = $("#recipedetailingredientsitemTemplate").prop("content");
+    scale : number = undefined;
 
     public constructor() {
         super();
@@ -12,10 +13,21 @@ class recipeDetails extends defaultPage {
         window.onscroll = _ => {
             this.updateAddBox(_);
         };
+
+        $("#quantityselect").change(e => 
+        {
+            this.scale = Number($(e.target).find(":selected").text());
+            this.scaleRecipe()
+        }
+        );
     }
 
     public load() {
         $.get({ url: "/services/recipes", data: { "id": this.getId() } }).done(data => {
+            if (!data.hasOwnProperty("defaultScale"))
+                data.defaultScale = 2;
+
+            this.scale = data.defaultScale;
             this.createRecipeDOM(data);
         });
 
@@ -85,12 +97,7 @@ class recipeDetails extends defaultPage {
                     })
 
             });
-
-
-
         });
-
-        //return $.when($.get({ url: "/services/recipe", data: { "id": 1 } }));
     }
 
     public createRecipeDOM(data: DataObjects.Recipe) {
@@ -117,8 +124,11 @@ class recipeDetails extends defaultPage {
         recing.forEach(i => {
             var tmpItem = $(this.listitemtemplateTag).clone();
             tmpItem.find(".name").text(ingredientsLookup[i.ingredient_id].name);
-            tmpItem.find(".amount").text(i.amount);
-
+            if (i.amount != undefined) {
+                tmpItem.find(".amount").data("defaultAmount", i.amount);
+                tmpItem.find(".amount").text(this.scale * i.amount);
+            }
+        
             if (unitLookup.hasOwnProperty(i.unit_id))
                 tmpItem.find(".unit").text(unitLookup[i.unit_id].symbol);
 
@@ -133,6 +143,19 @@ class recipeDetails extends defaultPage {
         let newtop = $(window).scrollTop() + 20;
         $("#recipedetailaddtoplan").animate({ top : newtop },20);
     }
+
+    public scaleRecipe() {
+        // not really typescript, but the jquery dom array did not play nice.
+        var tmpAmount = $(".recipedetailingredients .list .listitem .amount");
+        var that = this;
+        tmpAmount.each(function(i,v) {
+            let defaultAmount = Number($(v).data("defaultAmount"));
+            if (defaultAmount != undefined)
+                $(v).text(defaultAmount * that.scale);
+        });
+
+    }
+
 }
 
 var x = new recipeDetails();

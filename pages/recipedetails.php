@@ -36,7 +36,7 @@
                 <div class="peopleforquantity">
                     <span> For </span> 
                     <!-- Could have been made in Javascript... but... meh -->
-                    <select name="quantity"> 
+                    <select name="quantity" id="quantityselect"> 
                             <option value="1">1</option>
                             <option value="2" selected>2</option>
                             <option value="3">3</option>
