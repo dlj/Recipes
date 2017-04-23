@@ -40,9 +40,15 @@ function checkQueryString()
 </head>
 <body>
 
-    <div id="topMenu"> 
+    <div id="navigationMenu"> 
         <div class="topMenuItem"><span> Recipes </span></div>
-        <div id="foodplan" class="topMenuItem"> <span> Planning </span> </div>
+        <div class="topMenuItem"><span> Planning (3)</span></div>
+        <div class="topMenuItem" style="width:calc(100% - 18px)"><hr></div>
+        <div id="addtoplan" class="topMenuItem"><span> Add to plan </span></div>
+        <div id="favourite" class="topMenuItem"><span> Favourite </span></div>
+        <div class="topMenuItem" style="width:calc(100% - 18px)"><hr></div>
+        <div id="addrecipe" class="topMenuItem"> <span> Add recipe</span> </div>
+        <div id="editrecipe" class="topMenuItem"> <span> Edit recipe</span> </div>
     </div>
     <div id="mainContent">
      <?php checkQueryString() ?>

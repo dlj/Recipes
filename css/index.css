@@ -4,6 +4,7 @@ body
     font-size: 12px;
     color: black;
     font-family: 'Open Sans';
+    display: flex;
 }
 div 
 {
@@ -13,34 +14,46 @@ div
 #mainContent {
     height:100%;
     width:100%;
-    top:36px;
-    position:relative
+    flex: 8 1;
 }
 
-#topMenu {
-    position: fixed;
+#navigationMenu {
+    flex: 1 1;
     z-index:666;
     background-color: indianred;
     border-bottom:1px solid black;
-    height: 36px;
-    width:100%;
+    height: 100%;
+    width:100px;
     color: white;
     font-weight: bold;
 }
-#topMenu .topMenuItem {
+
+#navigationMenu .topMenuItem {
     float:left;
     margin:9px;
+    width:100%;
 }
 
-#foodplan {
+#favourite {
     height: 30px;
     line-height: 30px;
-    width:100px;
-    float:right !important;
-    margin: 3px 5px 2px 2px !important;
-    background-color: darkgrey;
+    width:calc(100% - 6px) !important;
+    margin: 3px !important;
+    background-color: orange;
     text-align: center;
     border-radius: 3px;
+    margin-left: 3px;
+}
+
+#addtoplan {
+    height: 30px;
+    line-height: 30px;
+    width:calc(100% - 6px) !important;
+    margin: 3px !important;
+    background-color: #5cb85c;
+    text-align: center;
+    border-radius: 3px;
+    margin-left: 3px;
 }
 
 .defaultButton {

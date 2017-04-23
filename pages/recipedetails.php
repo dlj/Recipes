@@ -24,9 +24,6 @@
         </li>
 </template>
     <div id="recipedetailcontent">
-    <div id="recipedetailaddtoplan" class="defaultButton greenBackground" >
-    <span> Add to plan </span>
-    </div>
         <div id="recipedetailtop">
             <div id="recipedetailtopName"> <span> </span> </div>
             <div id="recipedetailtopImage"> </div>
