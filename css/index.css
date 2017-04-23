@@ -15,21 +15,21 @@ div
     height:100%;
     width:100%;
     flex: 8 1;
+    overflow: auto;
 }
 
 #navigationMenu {
     flex: 1 1;
-    z-index:666;
     background-color: indianred;
-    border-bottom:1px solid black;
     height: 100%;
     width:100px;
     color: white;
     font-weight: bold;
+    overflow-x:hidden;
+    overflow-y:default;
 }
 
 #navigationMenu .topMenuItem {
-    float:left;
     margin:9px;
     width:100%;
 }

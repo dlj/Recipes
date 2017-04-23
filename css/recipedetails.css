@@ -6,7 +6,6 @@
 
 #recipedetailtop {
   height:75%;
-  top:5px;
   position:relative;
   border-bottom: 1px solid lightgrey;
   display: flex;
