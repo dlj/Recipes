@@ -3,7 +3,8 @@ module.exports = {
     entry:{
         index : './source/index.ts',
         recipedetails : './source/recipedetails.ts',
-        recipes : './source/recipes.ts'
+        recipes : './source/recipes.ts',
+        recipeeditor : './source/recipeeditor.ts'
     },
     output: {
         path: path.join(__dirname,"javascript"),
