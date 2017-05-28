@@ -133,3 +133,31 @@
 {
   padding-top:5px;
 }
+
+/* Edit */
+#recipedetailtopEditbar
+{
+  display: flex;
+  background-color: #ca9b52;
+  height: 40px;
+}
+
+#recipedetailtopEditbar .save
+{
+  flex: 1;
+}
+
+#recipedetailtopEditbar .addplan
+{
+  flex: 1;
+}
+#recipedetailtopEditbar .delete
+{
+  flex: 1;
+}
+
+#recipedetailtopEditbar .spacer
+{
+  flex: 10;
+}
+/* Edit End */

@@ -5,6 +5,7 @@ class recipeDetails extends defaultPage {
     templateTag = $("#recipedetailwalkthroughTemplate").prop("content");
     listitemtemplateTag = $("#recipedetailingredientsitemTemplate").prop("content");
     scale : number = undefined;
+    editMode : boolean = false;
 
     public constructor() {
         super();
@@ -156,8 +157,20 @@ class recipeDetails extends defaultPage {
 
     }
 
+    public toggleEditMode(enable : boolean) {
+        this.editMode = enable;
+        console.log("edit mode : " + enable.toString() );
+        if (enable) {
+            $("#recipedetailtopEditbar").show();
+        }
+        else {
+            $("#recipedetailtopEditbar").hide();
+        }
+        $("recipedetailtopName span, .recipedetailguides").attr("contenteditable", enable.toString());
+    }
+
 }
 
 var x = new recipeDetails();
 
-
+x.toggleEditMode(true);

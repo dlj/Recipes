@@ -24,6 +24,12 @@
         </li>
 </template>
     <div id="recipedetailcontent">
+    <div id="recipedetailtopEditbar">
+        <div class="save defaultButton">Save</div> 
+        <div class="addstep defaultButton">Add step</div> 
+         <div class="spacer"></div> 
+        <div class="delete defaultButton">Delete</div> 
+    </div>
         <div id="recipedetailtop">
             <div id="recipedetailtopName"> <span> </span> </div>
             <div id="recipedetailtopImage"> </div>
